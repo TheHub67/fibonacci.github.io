@@ -2,159 +2,278 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Menús Digitales</title>
+  <title>Menús Digitales QR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
+    :root {
+      --primary: #111;
+      --secondary: #f59e0b;
+      --bg: #f5f7fa;
+      --text: #333;
+      --card: #ffffff;
     }
 
-    header {
-      background: linear-gradient(135deg, #111, #333);
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #111827);
       color: white;
-      padding: 40px 20px;
+      padding: 70px 20px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
 
-    header p {
-      margin-top: 10px;
-      font-size: 1.1em;
-      opacity: 0.9;
-    }
-
-    .container {
-      max-width: 1100px;
+    .hero p {
+      max-width: 600px;
       margin: auto;
-      padding: 30px 20px;
+      font-size: 1.1rem;
+      opacity: 0.95;
     }
 
-    .intro {
+    .hero span {
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* SECCIONES */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
       text-align: center;
       margin-bottom: 40px;
     }
 
-    .intro h2 {
+    .section-title h2 {
+      font-size: 2rem;
       margin-bottom: 10px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+    .section-title p {
+      color: #555;
+      font-size: 1rem;
     }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    /* BENEFICIOS */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .feature {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       transition: transform 0.2s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .feature:hover {
+      transform: translateY(-6px);
     }
 
-    .card img {
+    .feature h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    /* RESTAURANTES */
+    .restaurants {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .restaurant-card {
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      transition: transform 0.25s;
+    }
+
+    .restaurant-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .restaurant-card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
     }
 
-    .card-content {
-      padding: 15px;
+    .restaurant-content {
+      padding: 20px;
     }
 
-    .card-content h3 {
-      margin: 0 0 8px 0;
+    .restaurant-content h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
     }
 
-    .card-content p {
-      font-size: 0.95em;
-      margin-bottom: 12px;
+    .restaurant-content p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      color: #555;
     }
 
     .btn {
-      display: block;
+      display: inline-block;
+      width: 100%;
       text-align: center;
-      background: #111;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--primary);
       color: white;
-      padding: 10px;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
+      transition: background 0.2s;
     }
 
-    footer {
-      background: #111;
+    .btn:hover {
+      background: #000;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, #111, #1f2933);
       color: white;
       text-align: center;
-      padding: 25px 15px;
-      margin-top: 40px;
-      font-size: 0.9em;
+      padding: 60px 20px;
+      border-radius: 24px;
+    }
+
+    .cta h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    .cta p {
+      max-width: 500px;
+      margin: 15px auto 25px;
+      opacity: 0.9;
+    }
+
+    .cta a {
+      background: var(--secondary);
+      color: #111;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px;
+      background: #0f172a;
+      color: #d1d5db;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
     }
 
     footer strong {
       display: block;
-      margin-top: 5px;
+      margin-top: 8px;
+      color: white;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ENCABEZADO -->
-  <header>
-    <h1>📲 Menús Digitales con QR</h1>
-    <p>Explora los restaurantes aliados y consulta sus menús desde tu celular</p>
-  </header>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Menús digitales con <span>QR</span></h1>
+    <p>
+      Descubre restaurantes, revisa su menú desde tu celular y pide fácil,
+      rápido y sin contacto.
+    </p>
+  </section>
 
-  <!-- CONTENIDO -->
-  <div class="container">
-
-    <div class="intro">
-      <h2>Restaurantes aliados</h2>
-      <p>Escanea el código QR en la mesa o entra directamente aquí</p>
+  <!-- BENEFICIOS -->
+  <section class="section">
+    <div class="section-title">
+      <h2>¿Por qué usar menús digitales?</h2>
+      <p>Una experiencia más cómoda para clientes y restaurantes</p>
     </div>
 
-    <div class="grid">
+    <div class="features">
+      <div class="feature">
+        <h3>📱 Sin descargas</h3>
+        <p>Escanea el QR y accede al menú directamente desde tu navegador.</p>
+      </div>
 
-      <!-- RESTAURANTE DE PRUEBA -->
-      <div class="card">
+      <div class="feature">
+        <h3>⚡ Rápido y claro</h3>
+        <p>Menús organizados, fáciles de leer y pensados para celular.</p>
+      </div>
+
+      <div class="feature">
+        <h3>🍽️ Para restaurantes reales</h3>
+        <p>Ideal para mesas, domicilios y pedidos por WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTES -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Restaurantes aliados</h2>
+      <p>Selecciona un restaurante y mira su menú</p>
+    </div>
+
+    <div class="restaurants">
+
+      <div class="restaurant-card">
         <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80" alt="Hamburguesas">
-        <div class="card-content">
+        <div class="restaurant-content">
           <h3>🍔 La Esquina Burger</h3>
-          <p>Hamburguesas artesanales · Pedidos por WhatsApp</p>
+          <p>Hamburguesas artesanales, papas crujientes y pedidos por WhatsApp.</p>
           <a class="btn" href="restaurante1.html">Ver menú</a>
         </div>
       </div>
 
-      <!-- ESPACIO PARA FUTUROS RESTAURANTES -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80" alt="Restaurante">
-        <div class="card-content">
-          <h3>Próximamente</h3>
-          <p>Este restaurante se unirá pronto a nuestra plataforma</p>
-          <a class="btn" href="#">Muy pronto</a>
-        </div>
-      </div>
-
     </div>
+  </section>
 
-  </div>
+  <!-- CTA -->
+  <section class="section">
+    <div class="cta">
+      <h2>¿Tienes un restaurante?</h2>
+      <p>
+        Únete a nuestra plataforma y ofrece a tus clientes un menú digital
+        moderno con código QR.
+      </p>
+      <a href="#">Quiero mi menú digital</a>
+    </div>
+  </section>
 
-  <!-- PIE DE PÁGINA -->
+  <!-- FOOTER -->
   <footer>
-    Plataforma de menús digitales
-    <strong>La Esquina Burger · Restaurante aliado</strong>
+    Plataforma de menús digitales con QR
+    <strong>Restaurante aliado: La Esquina Burger</strong>
     © 2026
   </footer>
 
