@@ -1,11 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Mi prueba GitHub Pages</title>
+  <meta charset="UTF-8">
+  <title>Menús Digitales</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111, #333);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .intro h2 {
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 8px 0;
+    }
+
+    .card-content p {
+      font-size: 0.95em;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #111;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+
+    footer strong {
+      display: block;
+      margin-top: 5px;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>¡Hola, GitHub Pages!</h1>
-    <p>Si ves esto, tu página web funciona.</p>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <h1>📲 Menús Digitales con QR</h1>
+    <p>Explora los restaurantes aliados y consulta sus menús desde tu celular</p>
+  </header>
+
+  <!-- CONTENIDO -->
+  <div class="container">
+
+    <div class="intro">
+      <h2>Restaurantes aliados</h2>
+      <p>Escanea el código QR en la mesa o entra directamente aquí</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- RESTAURANTE DE PRUEBA -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80" alt="Hamburguesas">
+        <div class="card-content">
+          <h3>🍔 La Esquina Burger</h3>
+          <p>Hamburguesas artesanales · Pedidos por WhatsApp</p>
+          <a class="btn" href="restaurante1.html">Ver menú</a>
+        </div>
+      </div>
+
+      <!-- ESPACIO PARA FUTUROS RESTAURANTES -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80" alt="Restaurante">
+        <div class="card-content">
+          <h3>Próximamente</h3>
+          <p>Este restaurante se unirá pronto a nuestra plataforma</p>
+          <a class="btn" href="#">Muy pronto</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    Plataforma de menús digitales
+    <strong>La Esquina Burger · Restaurante aliado</strong>
+    © 2026
+  </footer>
+
 </body>
 </html>
