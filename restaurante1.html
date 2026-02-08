@@ -9,3 +9,172 @@
 <p>Aquí irá el contenido.</p>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurantes en Villavicencio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fuente elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            padding: 50px 60px;
+        }
+
+        /* Encabezado */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            background-color: #fff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 70%;
+        }
+
+        /* Contenedor de tarjetas */
+        .cards {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .card {
+            width: 320px;
+            height: 420px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));
+        }
+
+        .card-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .card button {
+            background-color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #e5e5e5;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>RESTAURANTES EN<br>VILLAVICENCIO</h1>
+
+        <div class="logo">
+            <!-- Logo simple -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Golden_ratio.svg/512px-Golden_ratio.svg.png" alt="Fibonacci">
+        </div>
+    </div>
+
+    <div class="cards">
+
+        <!-- Card 1 -->
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1604909052743-94e838986d24');">
+            <div class="card-content">
+                <h2>RESTAURANTE<br>PICHACO</h2>
+                <button>View full menu</button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
+            <div class="card-content">
+                <h2>LA ESQUINA</h2>
+                <button>View full menu</button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe');">
+            <div class="card-content">
+                <h2>LA MORSA</h2>
+                <button>View full menu</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
