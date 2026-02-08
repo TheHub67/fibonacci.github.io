@@ -1,281 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Menús Digitales QR</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú's de Fibonacci</title>
 
-  <style>
-    :root {
-      --primary: #111;
-      --secondary: #f59e0b;
-      --bg: #f5f7fa;
-      --text: #333;
-      --card: #ffffff;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    * {
-      box-sizing: border-box;
-    }
+        body, html {
+            height: 100%;
+        }
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background-image: url("https://es.wallpapers.com/images/hd/4k-food-background-0j3r3i6v8yq9qj2l.jpg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #0f172a, #111827);
-      color: white;
-      padding: 70px 20px;
-      text-align: center;
-    }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
+        .content {
+            position: relative;
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
 
-    .hero p {
-      max-width: 600px;
-      margin: auto;
-      font-size: 1.1rem;
-      opacity: 0.95;
-    }
+        .subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
 
-    .hero span {
-      color: var(--secondary);
-      font-weight: bold;
-    }
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
 
-    /* SECCIONES */
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: #555;
-      font-size: 1rem;
-    }
-
-    /* BENEFICIOS */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
-    }
-
-    .feature {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: transform 0.2s;
-    }
-
-    .feature:hover {
-      transform: translateY(-6px);
-    }
-
-    .feature h3 {
-      margin-top: 0;
-      font-size: 1.2rem;
-    }
-
-    /* RESTAURANTES */
-    .restaurants {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .restaurant-card {
-      background: var(--card);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-      transition: transform 0.25s;
-    }
-
-    .restaurant-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .restaurant-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .restaurant-content {
-      padding: 20px;
-    }
-
-    .restaurant-content h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-
-    .restaurant-content p {
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-      color: #555;
-    }
-
-    .btn {
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      padding: 12px;
-      border-radius: 10px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: #000;
-    }
-
-    /* CTA */
-    .cta {
-      background: linear-gradient(135deg, #111, #1f2933);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-      border-radius: 24px;
-    }
-
-    .cta h2 {
-      margin-top: 0;
-      font-size: 2rem;
-    }
-
-    .cta p {
-      max-width: 500px;
-      margin: 15px auto 25px;
-      opacity: 0.9;
-    }
-
-    .cta a {
-      background: var(--secondary);
-      color: #111;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 60px;
-      background: #0f172a;
-      color: #d1d5db;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 0.9rem;
-    }
-
-    footer strong {
-      display: block;
-      margin-top: 8px;
-      color: white;
-    }
-  </style>
+        .btn:hover {
+            background: #f1f1f1;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Menús digitales con <span>QR</span></h1>
-    <p>
-      Descubre restaurantes, revisa su menú desde tu celular y pide fácil,
-      rápido y sin contacto.
-    </p>
-  </section>
+    <section class="hero">
+        <div class="overlay"></div>
 
-  <!-- BENEFICIOS -->
-  <section class="section">
-    <div class="section-title">
-      <h2>¿Por qué usar menús digitales?</h2>
-      <p>Una experiencia más cómoda para clientes y restaurantes</p>
-    </div>
+        <div class="content">
+            <span class="subtitle">¡PIDE YA!</span>
+            <h1>MENÚ´S DE<br>FIBONACCI</h1>
 
-    <div class="features">
-      <div class="feature">
-        <h3>📱 Sin descargas</h3>
-        <p>Escanea el QR y accede al menú directamente desde tu navegador.</p>
-      </div>
-
-      <div class="feature">
-        <h3>⚡ Rápido y claro</h3>
-        <p>Menús organizados, fáciles de leer y pensados para celular.</p>
-      </div>
-
-      <div class="feature">
-        <h3>🍽️ Para restaurantes reales</h3>
-        <p>Ideal para mesas, domicilios y pedidos por WhatsApp.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESTAURANTES -->
-  <section class="section">
-    <div class="section-title">
-      <h2>Restaurantes aliados</h2>
-      <p>Selecciona un restaurante y mira su menú</p>
-    </div>
-
-    <div class="restaurants">
-
-      <div class="restaurant-card">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80" alt="Hamburguesas">
-        <div class="restaurant-content">
-          <h3>🍔 La Esquina Burger</h3>
-          <p>Hamburguesas artesanales, papas crujientes y pedidos por WhatsApp.</p>
-          <a class="btn" href="restaurante1.html">Ver menú</a>
+            <a href="restaurantes.html" class="btn">
+                RESTAURANTES →
+            </a>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section">
-    <div class="cta">
-      <h2>¿Tienes un restaurante?</h2>
-      <p>
-        Únete a nuestra plataforma y ofrece a tus clientes un menú digital
-        moderno con código QR.
-      </p>
-      <a href="#">Quiero mi menú digital</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    Plataforma de menús digitales con QR
-    <strong>Restaurante aliado: La Esquina Burger</strong>
-    © 2026
-  </footer>
+    </section>
 
 </body>
 </html>
