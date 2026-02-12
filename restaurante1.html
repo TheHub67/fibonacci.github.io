@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurantes - Fibonacci</title>
+<title>Fibonacci | Restaurantes</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   VARIABLES
-========================= */
+/* =============================
+   VARIABLES PREMIUM
+============================= */
 
 :root{
   --gold:#f5c518;
   --gold-soft:#ffd54f;
   --dark:#0f0f0f;
-  --dark-2:#1a1a1a;
+  --dark-2:#161616;
+  --card:#1e1e1e;
 }
 
-/* =========================
-   RESET
-========================= */
+/* =============================
+   BASE
+============================= */
 
 *{
   margin:0;
@@ -32,113 +33,124 @@
 
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(245,197,24,0.05), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(245,197,24,0.05), transparent 40%),
+    linear-gradient(135deg,#0f0f0f,#1c1c1c);
   color:white;
   overflow-x:hidden;
+  transition:background 0.6s ease;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* =============================
+   NAVBAR INTELIGENTE
+============================= */
 
 .navbar{
   width:100%;
-  padding:20px 8%;
+  padding:22px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
   position:fixed;
   top:0;
   left:0;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
   z-index:1000;
-  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:0.4s;
 }
 
 .logo{
-  font-size:24px;
+  font-size:26px;
   font-weight:700;
   background:linear-gradient(90deg,#fff,var(--gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-/* =========================
-   SECCIÓN GENERAL
-========================= */
+/* =============================
+   SECCIONES
+============================= */
 
 .section{
-  padding-top:130px;
-  padding-bottom:80px;
-  transition:0.5s ease;
+  padding-top:140px;
+  padding-bottom:100px;
+  min-height:100vh;
+  animation:fadeIn 0.6s ease;
 }
 
 .hidden{
   display:none;
 }
 
+/* =============================
+   TITULOS
+============================= */
+
 .section h1{
   text-align:center;
-  font-size:40px;
+  font-size:42px;
   margin-bottom:10px;
 }
 
 .section p{
   text-align:center;
-  color:#bdbdbd;
-  margin-bottom:60px;
+  color:#bbb;
+  margin-bottom:70px;
 }
 
-/* =========================
-   GRID RESTAURANTES
-========================= */
+/* =============================
+   CARDS RESTAURANTES
+============================= */
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:50px;
   padding:0 8%;
 }
 
 .card{
-  height:420px;
-  border-radius:25px;
+  height:440px;
+  border-radius:28px;
   overflow:hidden;
   position:relative;
   background-size:cover;
   background-position:center;
-  box-shadow:0 25px 50px rgba(0,0,0,0.6);
+  box-shadow:0 25px 60px rgba(0,0,0,0.6);
   cursor:pointer;
-  transition:0.5s;
+  transition:transform 0.6s cubic-bezier(.2,.8,.2,1), box-shadow 0.6s;
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 35px 80px rgba(0,0,0,0.8);
 }
 
 .card::before{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,0.9),rgba(0,0,0,0.2));
+  background:linear-gradient(to top,rgba(0,0,0,0.95),rgba(0,0,0,0.3));
 }
 
 .card-content{
   position:absolute;
   bottom:0;
-  padding:25px;
+  padding:30px;
   z-index:2;
 }
 
 .card-content h2{
-  margin-bottom:15px;
+  margin-bottom:18px;
 }
 
 .card-content button{
-  padding:12px 25px;
+  padding:14px 30px;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
   background:var(--gold);
   font-weight:600;
   cursor:pointer;
@@ -150,31 +162,42 @@ body{
   transform:scale(1.05);
 }
 
-/* =========================
+/* =============================
    PERFIL RESTAURANTE
-========================= */
+============================= */
 
-.restaurant-profile{
-  padding-top:130px;
-  padding-bottom:80px;
-  padding-left:8%;
-  padding-right:8%;
-  animation:fadeIn 0.5s ease;
+.profile-hero{
+  height:55vh;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:50px 8%;
 }
 
-.profile-header{
-  text-align:center;
-  margin-bottom:50px;
+.profile-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.95),rgba(0,0,0,0.4));
 }
 
-.profile-header h2{
-  font-size:38px;
+.profile-hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.profile-hero-content h2{
+  font-size:48px;
   margin-bottom:10px;
 }
 
-.profile-header p{
-  color:#bbb;
+.profile-hero-content p{
+  color:#ccc;
 }
+
+/* BOTON VOLVER */
 
 .back-btn{
   display:inline-block;
@@ -186,29 +209,35 @@ body{
   text-decoration:none;
   font-weight:600;
   cursor:pointer;
+  transition:0.3s;
 }
+
+.back-btn:hover{
+  background:white;
+}
+
+/* GRID PLATOS */
 
 .menu-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+  padding:80px 8%;
 }
 
 .dish{
-  background:#1c1c1c;
-  border-radius:20px;
+  background:var(--card);
+  border-radius:22px;
   overflow:hidden;
-  box-shadow:0 15px 35px rgba(0,0,0,0.5);
-  transition:0.4s;
-}
-
-.dish:hover{
-  transform:translateY(-8px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  transform:translateY(20px);
+  opacity:0;
+  animation:fadeUp 0.6s forwards;
 }
 
 .dish img{
   width:100%;
-  height:180px;
+  height:200px;
   object-fit:cover;
 }
 
@@ -226,22 +255,29 @@ body{
   margin-top:5px;
 }
 
-/* =========================
-   ANIMACIÓN
-========================= */
+/* =============================
+   ANIMACIONES
+============================= */
 
 @keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+  from{opacity:0;}
+  to{opacity:1;}
 }
 
-/* =========================
+@keyframes fadeUp{
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+/* =============================
    RESPONSIVE
-========================= */
+============================= */
 
 @media(max-width:768px){
-  .section h1{
-    font-size:28px;
+  .profile-hero-content h2{
+    font-size:32px;
   }
 }
 
@@ -253,11 +289,10 @@ body{
   <div class="logo">Fibonacci</div>
 </nav>
 
-<!-- VISTA GENERAL -->
+<!-- HOME -->
 <section id="home" class="section">
-
   <h1>Restaurantes en Villavicencio</h1>
-  <p>Descubre experiencias gastronómicas únicas</p>
+  <p>Experiencias gastronómicas premium</p>
 
   <div class="cards">
 
@@ -276,37 +311,35 @@ body{
     </div>
 
   </div>
-
 </section>
 
-<!-- PERFIL RESTAURANTE -->
-<section id="restaurant-view" class="restaurant-profile hidden">
-
-  <div class="profile-header">
-    <h2 id="restaurant-name"></h2>
-    <p id="restaurant-desc"></p>
-    <a class="back-btn" onclick="goBack()">Volver</a>
+<!-- PERFIL -->
+<section id="profile" class="hidden">
+  <div id="profile-hero" class="profile-hero">
+    <div class="profile-hero-content">
+      <h2 id="restaurant-name"></h2>
+      <p id="restaurant-desc"></p>
+      <a class="back-btn" onclick="goBack()">Volver</a>
+    </div>
   </div>
-
   <div id="menu-container" class="menu-grid"></div>
-
 </section>
 
 <script>
 
 const restaurants = {
-
   pichaco:{
+    hero:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
     name:"PICHACO",
-    desc:"Especialistas en comida llanera gourmet.",
+    desc:"Especialistas en cocina llanera gourmet.",
     dishes:[
       {name:"Bandeja Llanera", price:"$38.000", img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
       {name:"Carne Premium", price:"$42.000", img:"https://images.unsplash.com/photo-1555992336-03a23c8a4a48"},
       {name:"Chorizo Artesanal", price:"$25.000", img:"https://images.unsplash.com/photo-1558036117-15d82a90b9b1"}
     ]
   },
-
   esquina:{
+    hero:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe",
     name:"LA ESQUINA",
     desc:"Opciones frescas y saludables.",
     dishes:[
@@ -315,7 +348,6 @@ const restaurants = {
       {name:"Wrap Natural", price:"$22.000", img:"https://images.unsplash.com/photo-1551782450-a2132b4ba21d"}
     ]
   }
-
 };
 
 function openRestaurant(key){
@@ -323,13 +355,14 @@ function openRestaurant(key){
 
   document.getElementById("restaurant-name").textContent = data.name;
   document.getElementById("restaurant-desc").textContent = data.desc;
+  document.getElementById("profile-hero").style.backgroundImage = `url(${data.hero})`;
 
   const container = document.getElementById("menu-container");
   container.innerHTML = "";
 
-  data.dishes.forEach(dish=>{
+  data.dishes.forEach((dish,i)=>{
     container.innerHTML += `
-      <div class="dish">
+      <div class="dish" style="animation-delay:${i*0.1}s">
         <img src="${dish.img}">
         <div class="dish-content">
           <h4>${dish.name}</h4>
@@ -339,16 +372,26 @@ function openRestaurant(key){
     `;
   });
 
+  history.pushState({page:key},"",`#${key}`);
   document.getElementById("home").classList.add("hidden");
-  document.getElementById("restaurant-view").classList.remove("hidden");
+  document.getElementById("profile").classList.remove("hidden");
   window.scrollTo(0,0);
 }
 
 function goBack(){
-  document.getElementById("restaurant-view").classList.add("hidden");
+  history.pushState({page:"home"},"","#home");
+  document.getElementById("profile").classList.add("hidden");
   document.getElementById("home").classList.remove("hidden");
   window.scrollTo(0,0);
 }
+
+window.onpopstate = function(){
+  if(location.hash.replace("#","") in restaurants){
+    openRestaurant(location.hash.replace("#",""));
+  }else{
+    goBack();
+  }
+};
 
 </script>
 
