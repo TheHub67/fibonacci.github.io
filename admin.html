@@ -1,0 +1,32 @@
+<h1>Panel de Control</h1>
+
+<form id="restaurantForm">
+    <input type="text" placeholder="Nombre del restaurante" required>
+    <input type="text" placeholder="Número de WhatsApp" required>
+    <input type="text" placeholder="URL del logo" required>
+    <button type="submit">Agregar</button>
+</form>
+
+<div id="preview"></div>
+
+<script>
+document.getElementById("restaurantForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = this.elements[0].value;
+    const number = this.elements[1].value;
+    const logo = this.elements[2].value;
+
+    const preview = document.getElementById("preview");
+
+    preview.innerHTML += `
+        <div style="margin:20px; padding:20px; border:1px solid #ccc;">
+            <img src="${logo}" width="100">
+            <h3>${name}</h3>
+            <p>${number}</p>
+        </div>
+    `;
+
+    this.reset();
+});
+</script>
