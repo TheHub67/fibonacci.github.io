@@ -5,14 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Restaurantes - Fibonacci</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ========================
-   RESET Y BASE
-======================== */
+/* =========================
+   VARIABLES GLOBALES
+========================= */
+
+:root{
+    --gold:#f5c518;
+    --gold-soft:#ffd54f;
+    --dark:#0f0f0f;
+    --dark-2:#1c1c1c;
+    --glass:rgba(255,255,255,0.05);
+}
+
+/* =========================
+   RESET
+========================= */
 
 *{
     margin:0;
@@ -21,45 +32,56 @@
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+    font-family:'Poppins',sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(245,197,24,0.05), transparent 40%),
+        linear-gradient(135deg, #0f0f0f, #1c1c1c);
     color:white;
     min-height:100vh;
+    overflow-x:hidden;
 }
 
-/* ========================
-   NAVBAR PROFESIONAL
-======================== */
+/* =========================
+   NAVBAR PRO
+========================= */
 
 .navbar{
     width:100%;
-    padding:20px 8%;
+    padding:22px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     position:fixed;
     top:0;
     left:0;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
     z-index:1000;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    transition:0.4s ease;
+}
+
+.navbar.scrolled{
+    background:rgba(0,0,0,0.9);
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
 }
 
 .logo{
-    font-size:22px;
+    font-size:24px;
     font-weight:700;
     letter-spacing:1px;
-    color:#f5c518;
+    background:linear-gradient(90deg, white, var(--gold));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .nav-links a{
     color:white;
     text-decoration:none;
-    margin-left:30px;
+    margin-left:35px;
     font-weight:400;
-    transition:0.3s;
     position:relative;
+    transition:0.3s;
 }
 
 .nav-links a::after{
@@ -68,179 +90,203 @@ body{
     width:0%;
     height:2px;
     left:0;
-    bottom:-5px;
-    background:#f5c518;
+    bottom:-6px;
+    background:var(--gold);
     transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
 }
 
 .nav-links a:hover::after{
     width:100%;
 }
 
-.nav-links a:hover{
-    color:#f5c518;
-}
-
-/* ========================
+/* =========================
    HEADER
-======================== */
+========================= */
 
 header{
-    padding-top:120px;
+    padding-top:140px;
     text-align:center;
+    animation:fadeUp 1.2s ease;
 }
 
 header h1{
-    font-size:42px;
+    font-size:44px;
     font-weight:700;
     margin-bottom:10px;
 }
 
 header p{
-    color:#bbbbbb;
+    color:#bdbdbd;
     font-weight:300;
 }
 
-/* ========================
-   CARDS
-======================== */
+/* =========================
+   GRID DE CARDS
+========================= */
 
 .cards{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
-    padding:60px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:50px;
+    padding:80px 8%;
 }
 
+/* =========================
+   CARD PREMIUM 3D
+========================= */
+
 .card{
-    width:320px;
-    height:420px;
+    height:440px;
     border-radius:25px;
     background-size:cover;
     background-position:center;
-    display:flex;
-    align-items:flex-end;
-    overflow:hidden;
     position:relative;
+    overflow:hidden;
     cursor:pointer;
-    transition:0.5s ease;
-    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    transition:transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow:0 25px 50px rgba(0,0,0,0.5);
+    transform-style:preserve-3d;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 30px 60px rgba(0,0,0,0.6);
+    transform:rotateY(5deg) rotateX(5deg) scale(1.03);
+    box-shadow:0 35px 70px rgba(0,0,0,0.7);
 }
 
 .card::before{
     content:"";
     position:absolute;
-    width:100%;
-    height:100%;
-    background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2));
     transition:0.4s;
 }
 
 .card.active::before{
-    background:linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.6));
+    background:linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0.6));
 }
 
+/* CONTENIDO */
+
 .card-content{
-    position:relative;
-    padding:25px;
-    width:100%;
+    position:absolute;
+    bottom:0;
+    padding:30px;
     z-index:2;
+    width:100%;
 }
 
 .card-content h2{
     font-weight:600;
-    margin-bottom:10px;
+    margin-bottom:15px;
+    font-size:22px;
 }
 
+/* BOTÓN */
+
 button{
-    background:#f5c518;
+    background:var(--gold);
     border:none;
-    padding:10px 22px;
-    border-radius:30px;
+    padding:12px 28px;
+    border-radius:40px;
     cursor:pointer;
     font-weight:600;
-    transition:0.3s;
+    transition:0.3s ease;
     color:black;
+    box-shadow:0 10px 25px rgba(245,197,24,0.3);
 }
 
 button:hover{
     background:white;
-    transform:scale(1.05);
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 15px 35px rgba(245,197,24,0.5);
 }
 
-/* ========================
-   INFO DESPLEGABLE
-======================== */
+/* INFO DESPLEGABLE */
 
 .info{
     max-height:0;
     overflow:hidden;
     opacity:0;
     transition:all 0.4s ease;
-    margin-top:10px;
+    margin-top:15px;
+    font-size:14px;
+    line-height:1.6;
 }
 
 .card.active .info{
-    max-height:200px;
+    max-height:220px;
     opacity:1;
 }
 
 .price{
     font-size:20px;
     font-weight:600;
-    color:#f5c518;
-    margin-top:8px;
+    color:var(--gold);
+    margin-top:10px;
 }
 
-/* ========================
-   BOTON VOLVER
-======================== */
+/* =========================
+   VOLVER
+========================= */
 
 .volver{
     text-align:center;
-    padding:60px 0;
+    padding:80px 0;
 }
 
 .volver a{
-    background:#f5c518;
-    padding:14px 35px;
-    border-radius:30px;
+    background:var(--gold);
+    padding:16px 40px;
+    border-radius:40px;
     text-decoration:none;
     color:black;
     font-weight:600;
-    transition:0.3s;
+    transition:0.3s ease;
+    box-shadow:0 10px 30px rgba(245,197,24,0.4);
 }
 
 .volver a:hover{
     background:white;
-    transform:scale(1.05);
+    transform:translateY(-4px) scale(1.05);
 }
 
-/* ========================
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
    RESPONSIVE
-======================== */
+========================= */
 
 @media(max-width:768px){
 
-    header h1{
-        font-size:30px;
-    }
-
     .navbar{
         flex-direction:column;
-        gap:10px;
+        gap:12px;
     }
 
-    .nav-links{
-        margin-top:10px;
+    header h1{
+        font-size:32px;
     }
 
+    .cards{
+        padding:60px 6%;
+    }
 }
 
 </style>
@@ -248,26 +294,23 @@ button:hover{
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
+<nav class="navbar" id="navbar">
     <div class="logo">Fibonacci</div>
     <div class="nav-links">
-        <a href="#">Inicio</a>
+        <a href="index.html">Inicio</a>
         <a href="#">Restaurantes</a>
         <a href="#">Contacto</a>
     </div>
 </nav>
 
-<!-- HEADER -->
 <header>
     <h1>Restaurantes en Villavicencio</h1>
     <p>Descubre experiencias gastronómicas únicas</p>
 </header>
 
-<!-- CARDS -->
 <div class="cards">
 
-    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
         <div class="card-content">
             <h2>PICHACO</h2>
             <button onclick="toggleInfo(this)">Ver menú</button>
@@ -279,7 +322,7 @@ button:hover{
         </div>
     </div>
 
-    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe');">
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe');">
         <div class="card-content">
             <h2>LA ESQUINA</h2>
             <button onclick="toggleInfo(this)">Ver menú</button>
@@ -291,7 +334,7 @@ button:hover{
         </div>
     </div>
 
-    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1604909052743-94e838986d24');">
+    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1604909052743-94e838986d24');">
         <div class="card-content">
             <h2>LA MORSA</h2>
             <button onclick="toggleInfo(this)">Ver menú</button>
@@ -305,16 +348,24 @@ button:hover{
 
 </div>
 
-<!-- VOLVER -->
 <div class="volver">
     <a href="index.html">Volver al inicio</a>
 </div>
 
 <script>
+
+/* Toggle menú */
 function toggleInfo(button){
     const card = button.closest('.card');
     card.classList.toggle('active');
 }
+
+/* Navbar efecto scroll */
+window.addEventListener("scroll", function(){
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+
 </script>
 
 </body>
