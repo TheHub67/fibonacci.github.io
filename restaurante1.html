@@ -10,15 +10,14 @@
 <style>
 
 /* =========================
-   VARIABLES GLOBALES
+   VARIABLES
 ========================= */
 
 :root{
-    --gold:#f5c518;
-    --gold-soft:#ffd54f;
-    --dark:#0f0f0f;
-    --dark-2:#1c1c1c;
-    --glass:rgba(255,255,255,0.05);
+  --gold:#f5c518;
+  --gold-soft:#ffd54f;
+  --dark:#0f0f0f;
+  --dark-2:#1a1a1a;
 }
 
 /* =========================
@@ -26,247 +25,214 @@
 ========================= */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(245,197,24,0.05), transparent 40%),
-        linear-gradient(135deg, #0f0f0f, #1c1c1c);
-    color:white;
-    min-height:100vh;
-    overflow-x:hidden;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
+  color:white;
+  overflow-x:hidden;
 }
 
 /* =========================
-   NAVBAR PRO
+   NAVBAR
 ========================= */
 
 .navbar{
-    width:100%;
-    padding:22px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:fixed;
-    top:0;
-    left:0;
-    background:rgba(0,0,0,0.55);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,0.06);
-    z-index:1000;
-    transition:0.4s ease;
-}
-
-.navbar.scrolled{
-    background:rgba(0,0,0,0.9);
-    box-shadow:0 10px 40px rgba(0,0,0,0.6);
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
-    font-size:24px;
-    font-weight:700;
-    letter-spacing:1px;
-    background:linear-gradient(90deg, white, var(--gold));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    margin-left:35px;
-    font-weight:400;
-    position:relative;
-    transition:0.3s;
-}
-
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    width:0%;
-    height:2px;
-    left:0;
-    bottom:-6px;
-    background:var(--gold);
-    transition:0.3s;
-}
-
-.nav-links a:hover{
-    color:var(--gold);
-}
-
-.nav-links a:hover::after{
-    width:100%;
+  font-size:24px;
+  font-weight:700;
+  background:linear-gradient(90deg,#fff,var(--gold));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 /* =========================
-   HEADER
+   SECCIÓN GENERAL
 ========================= */
 
-header{
-    padding-top:140px;
-    text-align:center;
-    animation:fadeUp 1.2s ease;
+.section{
+  padding-top:130px;
+  padding-bottom:80px;
+  transition:0.5s ease;
 }
 
-header h1{
-    font-size:44px;
-    font-weight:700;
-    margin-bottom:10px;
+.hidden{
+  display:none;
 }
 
-header p{
-    color:#bdbdbd;
-    font-weight:300;
+.section h1{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.section p{
+  text-align:center;
+  color:#bdbdbd;
+  margin-bottom:60px;
 }
 
 /* =========================
-   GRID DE CARDS
+   GRID RESTAURANTES
 ========================= */
 
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:50px;
-    padding:80px 8%;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:40px;
+  padding:0 8%;
 }
 
-/* =========================
-   CARD PREMIUM 3D
-========================= */
-
 .card{
-    height:440px;
-    border-radius:25px;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-    transition:transform 0.5s ease, box-shadow 0.5s ease;
-    box-shadow:0 25px 50px rgba(0,0,0,0.5);
-    transform-style:preserve-3d;
+  height:420px;
+  border-radius:25px;
+  overflow:hidden;
+  position:relative;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 25px 50px rgba(0,0,0,0.6);
+  cursor:pointer;
+  transition:0.5s;
 }
 
 .card:hover{
-    transform:rotateY(5deg) rotateX(5deg) scale(1.03);
-    box-shadow:0 35px 70px rgba(0,0,0,0.7);
+  transform:scale(1.05);
 }
 
 .card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2));
-    transition:0.4s;
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.9),rgba(0,0,0,0.2));
 }
-
-.card.active::before{
-    background:linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0.6));
-}
-
-/* CONTENIDO */
 
 .card-content{
-    position:absolute;
-    bottom:0;
-    padding:30px;
-    z-index:2;
-    width:100%;
+  position:absolute;
+  bottom:0;
+  padding:25px;
+  z-index:2;
 }
 
 .card-content h2{
-    font-weight:600;
-    margin-bottom:15px;
-    font-size:22px;
+  margin-bottom:15px;
 }
 
-/* BOTÓN */
-
-button{
-    background:var(--gold);
-    border:none;
-    padding:12px 28px;
-    border-radius:40px;
-    cursor:pointer;
-    font-weight:600;
-    transition:0.3s ease;
-    color:black;
-    box-shadow:0 10px 25px rgba(245,197,24,0.3);
+.card-content button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:var(--gold);
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-button:hover{
-    background:white;
-    transform:translateY(-4px) scale(1.05);
-    box-shadow:0 15px 35px rgba(245,197,24,0.5);
+.card-content button:hover{
+  background:white;
+  transform:scale(1.05);
 }
 
-/* INFO DESPLEGABLE */
+/* =========================
+   PERFIL RESTAURANTE
+========================= */
 
-.info{
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transition:all 0.4s ease;
-    margin-top:15px;
-    font-size:14px;
-    line-height:1.6;
+.restaurant-profile{
+  padding-top:130px;
+  padding-bottom:80px;
+  padding-left:8%;
+  padding-right:8%;
+  animation:fadeIn 0.5s ease;
 }
 
-.card.active .info{
-    max-height:220px;
-    opacity:1;
+.profile-header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.profile-header h2{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.profile-header p{
+  color:#bbb;
+}
+
+.back-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  border-radius:30px;
+  background:var(--gold);
+  color:black;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.dish{
+  background:#1c1c1c;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,0.5);
+  transition:0.4s;
+}
+
+.dish:hover{
+  transform:translateY(-8px);
+}
+
+.dish img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.dish-content{
+  padding:20px;
+}
+
+.dish-content h4{
+  margin-bottom:8px;
 }
 
 .price{
-    font-size:20px;
-    font-weight:600;
-    color:var(--gold);
-    margin-top:10px;
+  color:var(--gold);
+  font-weight:600;
+  margin-top:5px;
 }
 
 /* =========================
-   VOLVER
+   ANIMACIÓN
 ========================= */
 
-.volver{
-    text-align:center;
-    padding:80px 0;
-}
-
-.volver a{
-    background:var(--gold);
-    padding:16px 40px;
-    border-radius:40px;
-    text-decoration:none;
-    color:black;
-    font-weight:600;
-    transition:0.3s ease;
-    box-shadow:0 10px 30px rgba(245,197,24,0.4);
-}
-
-.volver a:hover{
-    background:white;
-    transform:translateY(-4px) scale(1.05);
-}
-
-/* =========================
-   ANIMACIONES
-========================= */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* =========================
@@ -274,97 +240,115 @@ button:hover{
 ========================= */
 
 @media(max-width:768px){
-
-    .navbar{
-        flex-direction:column;
-        gap:12px;
-    }
-
-    header h1{
-        font-size:32px;
-    }
-
-    .cards{
-        padding:60px 6%;
-    }
+  .section h1{
+    font-size:28px;
+  }
 }
 
 </style>
 </head>
-
 <body>
 
-<nav class="navbar" id="navbar">
-    <div class="logo">Fibonacci</div>
-    <div class="nav-links">
-        <a href="index.html">Inicio</a>
-        <a href="#">Restaurantes</a>
-        <a href="#">Contacto</a>
-    </div>
+<nav class="navbar">
+  <div class="logo">Fibonacci</div>
 </nav>
 
-<header>
-    <h1>Restaurantes en Villavicencio</h1>
-    <p>Descubre experiencias gastronómicas únicas</p>
-</header>
+<!-- VISTA GENERAL -->
+<section id="home" class="section">
 
-<div class="cards">
+  <h1>Restaurantes en Villavicencio</h1>
+  <p>Descubre experiencias gastronómicas únicas</p>
+
+  <div class="cards">
 
     <div class="card" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
-        <div class="card-content">
-            <h2>PICHACO</h2>
-            <button onclick="toggleInfo(this)">Ver menú</button>
-            <div class="info">
-                <p><strong>Plato estrella:</strong> Bandeja Llanera Gourmet</p>
-                <p>Carne a la parrilla, yuca frita, plátano maduro y ensalada fresca.</p>
-                <p class="price">$38.000 COP</p>
-            </div>
-        </div>
+      <div class="card-content">
+        <h2>PICHACO</h2>
+        <button onclick="openRestaurant('pichaco')">Ver menú</button>
+      </div>
     </div>
 
     <div class="card" style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe');">
-        <div class="card-content">
-            <h2>LA ESQUINA</h2>
-            <button onclick="toggleInfo(this)">Ver menú</button>
-            <div class="info">
-                <p><strong>Plato estrella:</strong> Ensalada Especial</p>
-                <p>Vegetales frescos, pollo grillado y aderezo artesanal.</p>
-                <p class="price">$28.000 COP</p>
-            </div>
-        </div>
+      <div class="card-content">
+        <h2>LA ESQUINA</h2>
+        <button onclick="openRestaurant('esquina')">Ver menú</button>
+      </div>
     </div>
 
-    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1604909052743-94e838986d24');">
-        <div class="card-content">
-            <h2>LA MORSA</h2>
-            <button onclick="toggleInfo(this)">Ver menú</button>
-            <div class="info">
-                <p><strong>Plato estrella:</strong> Pasta Artesanal Premium</p>
-                <p>Pasta fresca con salsa cremosa, champiñones y queso parmesano.</p>
-                <p class="price">$35.000 COP</p>
-            </div>
-        </div>
-    </div>
+  </div>
 
-</div>
+</section>
 
-<div class="volver">
-    <a href="index.html">Volver al inicio</a>
-</div>
+<!-- PERFIL RESTAURANTE -->
+<section id="restaurant-view" class="restaurant-profile hidden">
+
+  <div class="profile-header">
+    <h2 id="restaurant-name"></h2>
+    <p id="restaurant-desc"></p>
+    <a class="back-btn" onclick="goBack()">Volver</a>
+  </div>
+
+  <div id="menu-container" class="menu-grid"></div>
+
+</section>
 
 <script>
 
-/* Toggle menú */
-function toggleInfo(button){
-    const card = button.closest('.card');
-    card.classList.toggle('active');
+const restaurants = {
+
+  pichaco:{
+    name:"PICHACO",
+    desc:"Especialistas en comida llanera gourmet.",
+    dishes:[
+      {name:"Bandeja Llanera", price:"$38.000", img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+      {name:"Carne Premium", price:"$42.000", img:"https://images.unsplash.com/photo-1555992336-03a23c8a4a48"},
+      {name:"Chorizo Artesanal", price:"$25.000", img:"https://images.unsplash.com/photo-1558036117-15d82a90b9b1"}
+    ]
+  },
+
+  esquina:{
+    name:"LA ESQUINA",
+    desc:"Opciones frescas y saludables.",
+    dishes:[
+      {name:"Ensalada Especial", price:"$28.000", img:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe"},
+      {name:"Bowl Fit", price:"$30.000", img:"https://images.unsplash.com/photo-1490645935967-10de6ba17061"},
+      {name:"Wrap Natural", price:"$22.000", img:"https://images.unsplash.com/photo-1551782450-a2132b4ba21d"}
+    ]
+  }
+
+};
+
+function openRestaurant(key){
+  const data = restaurants[key];
+
+  document.getElementById("restaurant-name").textContent = data.name;
+  document.getElementById("restaurant-desc").textContent = data.desc;
+
+  const container = document.getElementById("menu-container");
+  container.innerHTML = "";
+
+  data.dishes.forEach(dish=>{
+    container.innerHTML += `
+      <div class="dish">
+        <img src="${dish.img}">
+        <div class="dish-content">
+          <h4>${dish.name}</h4>
+          <div class="price">${dish.price} COP</div>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("restaurant-view").classList.remove("hidden");
+  window.scrollTo(0,0);
 }
 
-/* Navbar efecto scroll */
-window.addEventListener("scroll", function(){
-    const navbar = document.getElementById("navbar");
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-});
+function goBack(){
+  document.getElementById("restaurant-view").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
 
 </script>
 
