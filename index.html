@@ -1,276 +1,308 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Menús de Fibonacci</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-  --gold:#f5c542;
-  --gold-soft:#ffd95e;
-  --dark:#0f0f0f;
-}
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Montserrat',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-html,body{
-  height:100%;
-  background:black;
-  overflow:hidden;
+body{
+background:#f4f6f9;
+color:#222;
 }
 
-/* HERO */
-
-.hero{
-  position:relative;
-  width:100%;
-  height:100vh;
-  overflow:hidden;
+header{
+background:#111;
+color:white;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-/* Imagen principal */
-
-.hero img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:1;
-  transform:scale(1.05);
-  animation:slowZoom 20s infinite alternate ease-in-out;
+header h1{
+font-size:24px;
 }
 
-/* Overlay cinematográfico */
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-  radial-gradient(circle at 50% 40%, rgba(0,0,0,0.2), rgba(0,0,0,0.85)),
-  linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.95));
-  z-index:2;
+.search-bar{
+width:60%;
+padding:12px;
+border-radius:8px;
+border:none;
+outline:none;
+font-size:16px;
 }
 
-/* Partículas doradas */
-
-.particles{
-  position:absolute;
-  width:100%;
-  height:100%;
-  z-index:3;
-  pointer-events:none;
+.container{
+padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
-.particles span{
-  position:absolute;
-  width:3px;
-  height:3px;
-  background:var(--gold);
-  border-radius:50%;
-  opacity:0.6;
-  animation:float 8s infinite ease-in-out;
+.restaurant-card{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+cursor:pointer;
 }
 
-.particles span:nth-child(1){ top:20%; left:30%; animation-delay:1s;}
-.particles span:nth-child(2){ top:60%; left:70%; animation-delay:3s;}
-.particles span:nth-child(3){ top:40%; left:80%; animation-delay:5s;}
-.particles span:nth-child(4){ top:75%; left:20%; animation-delay:2s;}
-.particles span:nth-child(5){ top:50%; left:50%; animation-delay:4s;}
-
-/* CONTENIDO */
-
-.content{
-  position:relative;
-  z-index:4;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  color:white;
-  padding:20px;
-  animation:fadeUp 1.5s ease forwards;
+.restaurant-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,0.12);
 }
 
-/* Subtítulo */
-
-.subtitle{
-  letter-spacing:6px;
-  font-size:14px;
-  margin-bottom:25px;
-  color:var(--gold);
-  font-weight:600;
-  position:relative;
+.restaurant-card img{
+width:100%;
+height:200px;
+object-fit:cover;
 }
 
-.subtitle::after{
-  content:"";
-  display:block;
-  width:60px;
-  height:2px;
-  background:var(--gold);
-  margin:12px auto 0 auto;
+.restaurant-card .info{
+padding:20px;
 }
 
-/* Título principal */
-
-h1{
-  font-size:clamp(50px,8vw,100px);
-  font-weight:800;
-  letter-spacing:6px;
-  line-height:1.1;
-  text-transform:uppercase;
-  background:linear-gradient(90deg, #ffffff, var(--gold));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:40px;
-  text-shadow:0 10px 40px rgba(245,197,66,0.15);
+.restaurant-card h2{
+font-size:20px;
+margin-bottom:10px;
 }
 
-/* Botón premium mejorado */
-
-.btn{
-  position:relative;
-  padding:18px 50px;
-  border-radius:60px;
-  font-weight:600;
-  letter-spacing:1px;
-  text-decoration:none;
-  color:black;
-  background:var(--gold);
-  box-shadow:0 10px 40px rgba(245,197,66,0.4);
-  overflow:hidden;
-  transition:0.4s ease;
+.restaurant-card p{
+color:#777;
+font-size:14px;
 }
 
-.btn::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-  transition:0.7s;
+.profile{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#fff;
+overflow-y:auto;
+display:none;
+z-index:1000;
+animation:fadeIn 0.4s ease;
 }
 
-.btn:hover::before{
-  left:100%;
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 
-.btn:hover{
-  transform:translateY(-6px) scale(1.05);
-  background:var(--gold-soft);
-  box-shadow:0 15px 50px rgba(245,197,66,0.6);
+.profile-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:30px 40px;
+background:#111;
+color:white;
 }
 
-/* Indicador scroll */
-
-.scroll-indicator{
-  position:absolute;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  width:25px;
-  height:40px;
-  border:2px solid var(--gold);
-  border-radius:20px;
-  z-index:4;
+.whatsapp-btn{
+background:#25D366;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
 }
 
-.scroll-indicator::after{
-  content:"";
-  position:absolute;
-  top:8px;
-  left:50%;
-  width:6px;
-  height:6px;
-  background:var(--gold);
-  border-radius:50%;
-  transform:translateX(-50%);
-  animation:scrollAnim 2s infinite;
+.close-btn{
+background:#e63946;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
 }
 
-/* ANIMACIONES */
-
-@keyframes slowZoom{
-  from{ transform:scale(1.05);}
-  to{ transform:scale(1.15);}
+.menu-grid{
+padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.dish{
+background:#fff;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
+overflow:hidden;
+transition:0.3s;
 }
 
-@keyframes float{
-  0%{ transform:translateY(0);}
-  50%{ transform:translateY(-20px);}
-  100%{ transform:translateY(0);}
+.dish:hover{
+transform:scale(1.03);
 }
 
-@keyframes scrollAnim{
-  0%{ opacity:0; transform:translate(-50%,0);}
-  50%{ opacity:1;}
-  100%{ opacity:0; transform:translate(-50%,15px);}
+.dish img{
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
-/* Responsive */
+.dish-info{
+padding:15px;
+}
+
+.dish-info h3{
+font-size:16px;
+margin-bottom:5px;
+}
+
+.price{
+font-weight:bold;
+color:#111;
+margin-top:8px;
+}
 
 @media(max-width:768px){
-  h1{
-    letter-spacing:3px;
-  }
-  .subtitle{
-    letter-spacing:3px;
-  }
+.search-bar{
+width:100%;
+margin-top:10px;
 }
-
+header{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+}
 </style>
 </head>
-
 <body>
 
-<section class="hero">
+<header>
+<h1>Menús de Fibonacci</h1>
+<input type="text" id="searchInput" class="search-bar" placeholder="Buscar restaurante...">
+</header>
 
-  <img src="fondo.jpg" alt="Comida gourmet">
+<div class="container" id="restaurantList"></div>
 
-  <div class="particles">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+<div class="profile" id="profile"></div>
 
-  <div class="content">
-    <div class="subtitle">¡PIDE YA!</div>
-    <h1>MENÚS DE<br>FIBONACCI</h1>
+<script>
 
-    <!-- BOTÓN EN EL MISMO LUGAR -->
-    <a href="restaurante1.html" class="btn">Ver restaurantes</a>
-  </div>
+const restaurants = [
+{
+name:"La Parrilla Llanera",
+phone:"573001111111",
+image:"https://images.unsplash.com/photo-1555992336-03a23c5c1b1f",
+description:"Carnes al carbón estilo llanero.",
+menu:[
+{name:"Punta de Anca",price:"$45.000",img:"https://images.unsplash.com/photo-1551183053-bf91a1d81141"},
+{name:"Churrasco",price:"$38.000",img:"https://images.unsplash.com/photo-1604908176997-43117b6c0c4d"},
+{name:"Costillas BBQ",price:"$42.000",img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+{name:"Carne a la Llanera",price:"$50.000",img:"https://images.unsplash.com/photo-1544025162-d76694265947"}
+]
+},
+{
+name:"Sushi Kai",
+phone:"573002222222",
+image:"https://images.unsplash.com/photo-1579871494447-9811cf80d66c",
+description:"Sushi fresco y cocina japonesa.",
+menu:[
+{name:"Roll California",price:"$28.000",img:"https://images.unsplash.com/photo-1553621042-f6e147245754"},
+{name:"Tempura Roll",price:"$30.000",img:"https://images.unsplash.com/photo-1583623025817-d180a2221d0a"},
+{name:"Nigiri Salmón",price:"$26.000",img:"https://images.unsplash.com/photo-1546069901-eacef0df6022"},
+{name:"Sashimi Mixto",price:"$35.000",img:"https://images.unsplash.com/photo-1553621042-f6e147245754"}
+]
+},
+{
+name:"Burger Factory",
+phone:"573003333333",
+image:"https://images.unsplash.com/photo-1550547660-d9450f859349",
+description:"Hamburguesas artesanales.",
+menu:[
+{name:"Classic Burger",price:"$22.000",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"},
+{name:"Doble Carne",price:"$28.000",img:"https://images.unsplash.com/photo-1550547660-d9450f859349"},
+{name:"BBQ Bacon",price:"$30.000",img:"https://images.unsplash.com/photo-1606756790138-261d2b21cd1f"},
+{name:"Cheese Burger",price:"$20.000",img:"https://images.unsplash.com/photo-1586190848861-99aa4a171e90"}
+]
+},
+{
+name:"Pizza Roma",
+phone:"573004444444",
+image:"https://images.unsplash.com/photo-1548365328-9f547fb0953b",
+description:"Pizza artesanal italiana.",
+menu:[
+{name:"Margarita",price:"$25.000",img:"https://images.unsplash.com/photo-1548365328-9f547fb0953b"},
+{name:"Pepperoni",price:"$27.000",img:"https://images.unsplash.com/photo-1601924582975-7d9f7d64c12e"},
+{name:"Cuatro Quesos",price:"$29.000",img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
+{name:"Hawaiana",price:"$28.000",img:"https://images.unsplash.com/photo-1594007654729-407eedc4be65"}
+]
+}
+];
 
-  <div class="scroll-indicator"></div>
+const container = document.getElementById("restaurantList");
 
-</section>
+function renderRestaurants(list){
+container.innerHTML="";
+list.forEach((res,index)=>{
+container.innerHTML+=`
+<div class="restaurant-card" onclick="openProfile(${index})">
+<img src="${res.image}?auto=format&fit=crop&w=800&q=80">
+<div class="info">
+<h2>${res.name}</h2>
+<p>${res.description}</p>
+</div>
+</div>
+`;
+});
+}
+
+function openProfile(index){
+const res = restaurants[index];
+const profile = document.getElementById("profile");
+profile.style.display="block";
+
+profile.innerHTML=`
+<div class="profile-header">
+<div>
+<h1>${res.name}</h1>
+<a href="https://wa.me/${res.phone}" target="_blank" class="whatsapp-btn">📞 ${res.phone}</a>
+</div>
+<button class="close-btn" onclick="closeProfile()">Cerrar</button>
+</div>
+
+<div class="menu-grid">
+${res.menu.map(dish=>`
+<div class="dish">
+<img src="${dish.img}?auto=format&fit=crop&w=800&q=80">
+<div class="dish-info">
+<h3>${dish.name}</h3>
+<div class="price">${dish.price}</div>
+</div>
+</div>
+`).join("")}
+</div>
+`;
+}
+
+function closeProfile(){
+document.getElementById("profile").style.display="none";
+}
+
+document.getElementById("searchInput").addEventListener("keyup",function(){
+let filter = this.value.toLowerCase();
+let filtered = restaurants.filter(r=>r.name.toLowerCase().includes(filter));
+renderRestaurants(filtered);
+});
+
+renderRestaurants(restaurants);
+
+</script>
 
 </body>
 </html>
