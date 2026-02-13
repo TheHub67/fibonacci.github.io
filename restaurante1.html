@@ -21,10 +21,6 @@
   --card:#1e1e1e;
 }
 
-/* =============================
-   BASE
-============================= */
-
 *{
   margin:0;
   padding:0;
@@ -42,9 +38,7 @@ body{
   transition:background 0.6s ease;
 }
 
-/* =============================
-   NAVBAR INTELIGENTE
-============================= */
+/* NAVBAR */
 
 .navbar{
   width:100%;
@@ -59,7 +53,6 @@ body{
   backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,0.06);
   z-index:1000;
-  transition:0.4s;
 }
 
 .logo{
@@ -70,24 +63,17 @@ body{
   -webkit-text-fill-color:transparent;
 }
 
-/* =============================
-   SECCIONES
-============================= */
+/* SECCIONES */
 
 .section{
-  padding-top:140px;
+  padding-top:160px;
   padding-bottom:100px;
   min-height:100vh;
-  animation:fadeIn 0.6s ease;
 }
 
 .hidden{
   display:none;
 }
-
-/* =============================
-   TITULOS
-============================= */
 
 .section h1{
   text-align:center;
@@ -98,12 +84,35 @@ body{
 .section p{
   text-align:center;
   color:#bbb;
-  margin-bottom:70px;
+  margin-bottom:40px;
 }
 
-/* =============================
-   CARDS RESTAURANTES
-============================= */
+/* BUSCADOR */
+
+.search-container{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.search-container input{
+  width:50%;
+  padding:14px 20px;
+  border-radius:40px;
+  border:none;
+  outline:none;
+  font-size:15px;
+  background:#1e1e1e;
+  color:white;
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.3s;
+}
+
+.search-container input:focus{
+  border:1px solid var(--gold);
+  box-shadow:0 0 15px rgba(245,197,24,0.3);
+}
+
+/* CARDS */
 
 .cards{
   display:grid;
@@ -162,9 +171,7 @@ body{
   transform:scale(1.05);
 }
 
-/* =============================
-   PERFIL RESTAURANTE
-============================= */
+/* PERFIL */
 
 .profile-hero{
   height:55vh;
@@ -197,8 +204,6 @@ body{
   color:#ccc;
 }
 
-/* BOTON VOLVER */
-
 .back-btn{
   display:inline-block;
   margin-top:20px;
@@ -209,14 +214,7 @@ body{
   text-decoration:none;
   font-weight:600;
   cursor:pointer;
-  transition:0.3s;
 }
-
-.back-btn:hover{
-  background:white;
-}
-
-/* GRID PLATOS */
 
 .menu-grid{
   display:grid;
@@ -230,9 +228,6 @@ body{
   border-radius:22px;
   overflow:hidden;
   box-shadow:0 15px 40px rgba(0,0,0,0.6);
-  transform:translateY(20px);
-  opacity:0;
-  animation:fadeUp 0.6s forwards;
 }
 
 .dish img{
@@ -245,39 +240,15 @@ body{
   padding:20px;
 }
 
-.dish-content h4{
-  margin-bottom:8px;
-}
-
 .price{
   color:var(--gold);
   font-weight:600;
   margin-top:5px;
 }
 
-/* =============================
-   ANIMACIONES
-============================= */
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-@keyframes fadeUp{
-  to{
-    transform:translateY(0);
-    opacity:1;
-  }
-}
-
-/* =============================
-   RESPONSIVE
-============================= */
-
 @media(max-width:768px){
-  .profile-hero-content h2{
-    font-size:32px;
+  .search-container input{
+    width:80%;
   }
 }
 
@@ -289,31 +260,17 @@ body{
   <div class="logo">Fibonacci</div>
 </nav>
 
-<!-- HOME -->
 <section id="home" class="section">
   <h1>Restaurantes en Villavicencio</h1>
   <p>Experiencias gastronómicas premium</p>
 
-  <div class="cards">
-
-    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
-      <div class="card-content">
-        <h2>PICHACO</h2>
-        <button onclick="openRestaurant('pichaco')">Ver menú</button>
-      </div>
-    </div>
-
-    <div class="card" style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe');">
-      <div class="card-content">
-        <h2>LA ESQUINA</h2>
-        <button onclick="openRestaurant('esquina')">Ver menú</button>
-      </div>
-    </div>
-
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar restaurante...">
   </div>
+
+  <div class="cards" id="cards-container"></div>
 </section>
 
-<!-- PERFIL -->
 <section id="profile" class="hidden">
   <div id="profile-hero" class="profile-hero">
     <div class="profile-hero-content">
@@ -328,70 +285,109 @@ body{
 <script>
 
 const restaurants = {
+
   pichaco:{
     hero:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
     name:"PICHACO",
     desc:"Especialistas en cocina llanera gourmet.",
     dishes:[
-      {name:"Bandeja Llanera", price:"$38.000", img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
-      {name:"Carne Premium", price:"$42.000", img:"https://images.unsplash.com/photo-1555992336-03a23c8a4a48"},
-      {name:"Chorizo Artesanal", price:"$25.000", img:"https://images.unsplash.com/photo-1558036117-15d82a90b9b1"}
+      {name:"Bandeja Llanera", price:"38.000", img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+      {name:"Carne Premium", price:"42.000", img:"https://images.unsplash.com/photo-1555992336-03a23c8a4a48"},
+      {name:"Chorizo Artesanal", price:"25.000", img:"https://images.unsplash.com/photo-1558036117-15d82a90b9b1"}
     ]
   },
+
   esquina:{
     hero:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe",
     name:"LA ESQUINA",
     desc:"Opciones frescas y saludables.",
     dishes:[
-      {name:"Ensalada Especial", price:"$28.000", img:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe"},
-      {name:"Bowl Fit", price:"$30.000", img:"https://images.unsplash.com/photo-1490645935967-10de6ba17061"},
-      {name:"Wrap Natural", price:"$22.000", img:"https://images.unsplash.com/photo-1551782450-a2132b4ba21d"}
+      {name:"Ensalada Especial", price:"28.000", img:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe"},
+      {name:"Bowl Fit", price:"30.000", img:"https://images.unsplash.com/photo-1490645935967-10de6ba17061"},
+      {name:"Wrap Natural", price:"22.000", img:"https://images.unsplash.com/photo-1551782450-a2132b4ba21d"}
+    ]
+  },
+
+  sushi:{
+    hero:"https://images.unsplash.com/photo-1553621042-f6e147245754",
+    name:"SUSHI KAI",
+    desc:"Sushi fresco y cocina japonesa.",
+    dishes:[
+      {name:"Roll California", price:"28.000", img:"https://images.unsplash.com/photo-1553621042-f6e147245754"},
+      {name:"Tempura Roll", price:"30.000", img:"https://images.unsplash.com/photo-1583623025817-d180a2221d0a"},
+      {name:"Nigiri Salmón", price:"26.000", img:"https://images.unsplash.com/photo-1546069901-eacef0df6022"}
+    ]
+  },
+
+  burger:{
+    hero:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+    name:"BURGER FACTORY",
+    desc:"Hamburguesas artesanales premium.",
+    dishes:[
+      {name:"Classic Burger", price:"22.000", img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"},
+      {name:"BBQ Bacon", price:"30.000", img:"https://images.unsplash.com/photo-1550547660-d9450f859349"},
+      {name:"Doble Carne", price:"28.000", img:"https://images.unsplash.com/photo-1606756790138-261d2b21cd1f"}
     ]
   }
+
 };
+
+const cardsContainer = document.getElementById("cards-container");
+
+function renderCards(filter=""){
+  cardsContainer.innerHTML="";
+  Object.keys(restaurants).forEach(key=>{
+    const r = restaurants[key];
+    if(r.name.toLowerCase().includes(filter.toLowerCase())){
+      cardsContainer.innerHTML += `
+        <div class="card" style="background-image:url('${r.hero}')">
+          <div class="card-content">
+            <h2>${r.name}</h2>
+            <button onclick="openRestaurant('${key}')">Ver menú</button>
+          </div>
+        </div>
+      `;
+    }
+  });
+}
+
+renderCards();
+
+document.getElementById("searchInput").addEventListener("keyup",function(){
+  renderCards(this.value);
+});
 
 function openRestaurant(key){
   const data = restaurants[key];
-
   document.getElementById("restaurant-name").textContent = data.name;
   document.getElementById("restaurant-desc").textContent = data.desc;
   document.getElementById("profile-hero").style.backgroundImage = `url(${data.hero})`;
 
   const container = document.getElementById("menu-container");
-  container.innerHTML = "";
+  container.innerHTML="";
 
-  data.dishes.forEach((dish,i)=>{
-    container.innerHTML += `
-      <div class="dish" style="animation-delay:${i*0.1}s">
+  data.dishes.forEach(dish=>{
+    container.innerHTML+=`
+      <div class="dish">
         <img src="${dish.img}">
         <div class="dish-content">
           <h4>${dish.name}</h4>
-          <div class="price">${dish.price} COP</div>
+          <div class="price">$${dish.price} COP</div>
         </div>
       </div>
     `;
   });
 
-  history.pushState({page:key},"",`#${key}`);
   document.getElementById("home").classList.add("hidden");
   document.getElementById("profile").classList.remove("hidden");
   window.scrollTo(0,0);
 }
 
 function goBack(){
-  history.pushState({page:"home"},"","#home");
   document.getElementById("profile").classList.add("hidden");
   document.getElementById("home").classList.remove("hidden");
   window.scrollTo(0,0);
 }
-
-window.onpopstate = function(){
-  if(location.hash.replace("#","") in restaurants){
-    openRestaurant(location.hash.replace("#",""));
-  }else{
-    goBack();
-  }
-};
 
 </script>
 
