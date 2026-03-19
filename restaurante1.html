@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Restaurantes - Fibonacci</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,151 +16,150 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
 }
 
 body{
 background:black;
 color:white;
-font-family:'Poppins',sans-serif;
-padding:40px;
+padding:60px;
 }
 
 h1{
 text-align:center;
-font-family:'Playfair Display',serif;
-font-size:42px;
-margin-bottom:40px;
+font-size:40px;
+margin-bottom:60px;
+letter-spacing:3px;
+color:#d4af37;
 }
 
-.cards{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
+.contenedor{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+max-width:1200px;
+margin:auto;
 }
 
-.card{
-width:280px;
-height:360px;
-border-radius:20px;
-background-size:cover;
-background-position:center;
-position:relative;
+.restaurante{
+background:#111;
+border-radius:18px;
 overflow:hidden;
+box-shadow:0 0 10px rgba(0,0,0,0.6);
 }
 
-.card::after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.55);
+.restaurante img{
+width:100%;
+height:200px;
+object-fit:cover;
 }
 
-.card-content{
-position:absolute;
-inset:0;
-z-index:2;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+.info{
+padding:20px;
 text-align:center;
 }
 
-.card h2{
-font-family:'Playfair Display',serif;
+.info h2{
+color:#d4af37;
 margin-bottom:10px;
 }
 
-.card p{
+.info p{
 font-size:14px;
-margin-bottom:12px;
-opacity:0.9;
+opacity:0.8;
+margin-bottom:18px;
 }
 
-.card a{
-text-decoration:none;
-}
-
-.card button{
-padding:10px 24px;
-border-radius:30px;
-border:none;
-cursor:pointer;
-font-weight:500;
-}
-
-.back{
-display:block;
-margin:60px auto 0;
-background:white;
+.boton{
+display:inline-block;
+padding:10px 25px;
+background:#d4af37;
 color:black;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+}
+
+.volver{
+display:block;
+margin:80px auto 0;
+text-align:center;
+color:black;
+background:#d4af37;
 padding:12px 30px;
 border-radius:30px;
+width:200px;
 text-decoration:none;
-width:fit-content;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <h1>RESTAURANTES EN VILLAVICENCIO</h1>
 
-<div class="cards">
+<div class="contenedor">
 
-<!-- PICHACO -->
-
-<div class="card"
-style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
-
-<div class="card-content">
-<h2>PICHACO</h2>
-<p>Carne • Parrilla • Hamburguesas</p>
-
-<a href="menu-pichaco.html">
-<button>Ver menú</button>
-</a>
-
+<div class="restaurante">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<div class="info">
+<h2>Pichaco</h2>
+<p>Parrilla • Hamburguesas • Carne premium</p>
+<a class="boton">Ver menú</a>
 </div>
 </div>
 
-<!-- LA ESQUINA -->
-
-<div class="card"
-style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe');">
-
-<div class="card-content">
-<h2>LA ESQUINA</h2>
-<p>Pizza • Pasta • Italiana</p>
-
-<a href="menu-esquina.html">
-<button>Ver menú</button>
-</a>
-
+<div class="restaurante">
+<img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+<div class="info">
+<h2>La Esquina</h2>
+<p>Pizza • Pasta • Cocina italiana</p>
+<a class="boton">Ver menú</a>
 </div>
 </div>
 
-<!-- LA MORSA -->
+<div class="restaurante">
+<img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe">
+<div class="info">
+<h2>La Morsa</h2>
+<p>Mariscos • Sushi • Pescados</p>
+<a class="boton">Ver menú</a>
+</div>
+</div>
 
-<div class="card"
-style="background-image:url('https://images.unsplash.com/photo-1604909052743-94e838986d24');">
+<div class="restaurante">
+<img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086">
+<div class="info">
+<h2>Brasa Real</h2>
+<p>Parrilla • Cortes premium</p>
+<a class="boton">Ver menú</a>
+</div>
+</div>
 
-<div class="card-content">
-<h2>LA MORSA</h2>
-<p>Mariscos • Pescado • Sushi</p>
+<div class="restaurante">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+<div class="info">
+<h2>Santa Parrilla</h2>
+<p>Asados • Carnes • BBQ</p>
+<a class="boton">Ver menú</a>
+</div>
+</div>
 
-<a href="menu-morsa.html">
-<button>Ver menú</button>
-</a>
-
+<div class="restaurante">
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
+<div class="info">
+<h2>Roma Pizza</h2>
+<p>Pizzas artesanales • Pastas</p>
+<a class="boton">Ver menú</a>
 </div>
 </div>
 
 </div>
 
-<a href="./index.html" class="back">Volver al inicio</a>
+<a class="volver" href="index.html">Volver al inicio</a>
 
 </body>
+
 </html>
