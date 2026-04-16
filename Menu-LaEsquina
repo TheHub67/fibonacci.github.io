@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>La Esquina - Menú</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+background:black;
+color:white;
+padding:50px;
+}
+
+h1{
+text-align:center;
+color:#d4af37;
+margin-bottom:10px;
+}
+
+.sub{
+text-align:center;
+margin-bottom:40px;
+opacity:0.7;
+}
+
+/* SECCIONES */
+
+.seccion{
+margin-bottom:50px;
+}
+
+.seccion h2{
+color:#d4af37;
+margin-bottom:20px;
+border-bottom:1px solid #333;
+padding-bottom:5px;
+}
+
+/* ITEM */
+
+.item{
+margin-bottom:18px;
+}
+
+.nombre{
+display:flex;
+justify-content:space-between;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.descripcion{
+font-size:13px;
+opacity:0.7;
+}
+
+/* BOTON */
+
+.volver{
+display:block;
+margin:60px auto 0;
+text-align:center;
+background:#d4af37;
+color:black;
+padding:12px 30px;
+border-radius:30px;
+text-decoration:none;
+width:200px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>LA ESQUINA</h1>
+<div class="sub">Cocina Italiana & Pizzas Artesanales</div>
+
+<!-- PIZZAS -->
+
+<div class="seccion">
+
+<h2>Pizzas</h2>
+
+<div class="item">
+<div class="nombre">
+<span>Margarita</span>
+<span>$20.000</span>
+</div>
+<div class="descripcion">
+Salsa de tomate, mozzarella fresca, albahaca y aceite de oliva.
+</div>
+</div>
+
+<div class="item">
+<div class="nombre">
+<span>Pepperoni</span>
+<span>$22.000</span>
+</div>
+<div class="descripcion">
+Mozzarella, rodajas de pepperoni y salsa de tomate artesanal.
+</div>
+</div>
+
+<div class="item">
+<div class="nombre">
+<span>Hawaiana</span>
+<span>$21.000</span>
+</div>
+<div class="descripcion">
+Jamón, piña caramelizada y queso mozzarella.
+</div>
+</div>
+
+</div>
+
+<!-- PASTAS -->
+
+<div class="seccion">
+
+<h2>Pastas</h2>
+
+<div class="item">
+<div class="nombre">
+<span>Spaghetti Bolognesa</span>
+<span>$24.000</span>
+</div>
+<div class="descripcion">
+Pasta larga con salsa de carne, tomate y especias italianas.
+</div>
+</div>
+
+<div class="item">
+<div class="nombre">
+<span>Fettuccine Alfredo</span>
+<span>$23.000</span>
+</div>
+<div class="descripcion">
+Pasta cremosa con salsa de queso parmesano y mantequilla.
+</div>
+</div>
+
+<div class="item">
+<div class="nombre">
+<span>Lasaña</span>
+<span>$26.000</span>
+</div>
+<div class="descripcion">
+Capas de pasta con carne, salsa de tomate y queso gratinado.
+</div>
+</div>
+
+</div>
+
+<!-- BEBIDAS -->
+
+<div class="seccion">
+
+<h2>Bebidas</h2>
+
+<div class="item">
+<div class="nombre">
+<span>Gaseosa</span>
+<span>$5.000</span>
+</div>
+<div class="descripcion">
+Coca-Cola, Sprite o Colombiana.
+</div>
+</div>
+
+<div class="item">
+<div class="nombre">
+<span>Limonada Natural</span>
+<span>$6.000</span>
+</div>
+<div class="descripcion">
+Refrescante bebida natural.
+</div>
+</div>
+
+</div>
+
+<a class="volver" href="restaurante1.html">Volver</a>
+
+</body>
+</html>
